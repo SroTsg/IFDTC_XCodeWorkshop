@@ -36,12 +36,19 @@
     [request setValue:@"application/x-www-form-urlencoded; charset=UTF-8" forHTTPHeaderField:@"Content-Type"];
     [request setHTTPBody:postData];
     
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle: @"HTML POST RESPONSE"
+                                                   message: @"Post Sent!"
+                                                  delegate: self
+                                         cancelButtonTitle:@"OK"
+                                         otherButtonTitles:nil];
+    
     if (sender){
         NSURLConnection *conn = [[NSURLConnection alloc]initWithRequest:request delegate:self];
     
         if (conn)
         {
             NSLog(@"Connection Successful");
+            [alert show];
         }
         else
         {
